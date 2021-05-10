@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: 114740533051626506, guid: e4504fbed449d4c4cba6c22bd4953a25, type: 3}
   - {fileID: 114666491478848388, guid: 545a32703d951094185d08198bc8316d, type: 3}
   - {fileID: 4887551448865305903, guid: 4375bc8ec4fad144db9e1b282b70541e, type: 3}
+  - {fileID: 1575339307188780656, guid: 6e0346c4eb1920943adfcbbdb441a155, type: 3}
   monsterCharacterEntities:
   - {fileID: 114107677553822186, guid: 2124e2e5e8dd2794ea8c8aff808d0096, type: 3}
   - {fileID: 114313543944479198, guid: c26675f5ea04ade429c509dd5998a3a3, type: 3}
@@ -154,6 +155,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0122f68aff58f2a4e995208bf67f18ba, type: 2}
   - {fileID: 11400000, guid: f924bc5e901d46141bb3c3ca9b6ef27a, type: 2}
   - {fileID: 11400000, guid: 8c31218a0e7c7604ea751e1a56a13a76, type: 2}
+  - {fileID: 11400000, guid: 466b5727c2dd9d943923cab24e0d2f0a, type: 2}
   monsterCharacters:
   - {fileID: 11400000, guid: aeba3337cf294524f8e2902f87a7532d, type: 2}
   - {fileID: 11400000, guid: 1c730dbe51ce978429028abe63e1df91, type: 2}
