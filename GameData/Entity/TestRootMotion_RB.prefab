@@ -832,6 +832,7 @@ GameObject:
   - component: {fileID: 138270278238419051}
   - component: {fileID: 2664654362358263024}
   - component: {fileID: 1575339307188780656}
+  - component: {fileID: 2026251890292779030}
   m_Layer: 0
   m_Name: TestRootMotion_RB
   m_TagString: Untagged
@@ -848,7 +849,7 @@ Transform:
   m_GameObject: {fileID: 4847603798428329160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 7715955391231370848}
   - {fileID: 7412104405051431768}
@@ -1097,8 +1098,7 @@ MonoBehaviour:
   skillAnimations: []
   movementDampingTme: 0.1
   controllerType: 0
-  animator: {fileID: 4088458792223617656, guid: 4375bc8ec4fad144db9e1b282b70541e,
-    type: 3}
+  animator: {fileID: 6280258360907008636}
   animatorController: {fileID: 9100000, guid: 28fff59b51517814aa4ea2e694efb8c4, type: 2}
   actionStateLayer: 0
   actionStateNames:
@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56367cc2ed44f1e49835e9c247771fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assetId: 6e0346c4eb1920943adfcbbdb441a155
+  assetId: 
   objectId: 0
   visibleRange: 0
   alwaysVisible: 0
@@ -1686,6 +1686,44 @@ MonoBehaviour:
     dataChannel: 0
     forOwnerOnly: 1
   writeAddonLog: 0
+--- !u!114 &2026251890292779030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4847603798428329160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4f3dab0c8bfc784a83ca4c17d39cb9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviourIndex: 0
+  dataChannel: 0
+  sendOptions: 0
+  sendInterval: 0.1
+  stoppingDistance: 0.1
+  jumpHeight: 2
+  applyJumpForceMode: 0
+  applyJumpForceFixedDuration: 0
+  backwardMoveSpeedRate: 0.75
+  gravity: 9.81
+  maxFallVelocity: 40
+  airborneDelay: 0.01
+  doNotChangeVelocityWhileAirborne: 0
+  landedPauseMovementDuration: 0
+  underWaterThreshold: 0.75
+  autoSwimToSurface: 0
+  useRootMotionForMovement: 1
+  useRootMotionForAirMovement: 0
+  useRootMotionForJump: 0
+  useRootMotionForFall: 0
+  useRootMotionWhileNotMoving: 1
+  moveThreshold: 0.01
+  snapThreshold: 5
+  clientSyncTransformInterval: 0.05
+  clientSendInputsInterval: 0.05
+  serverSyncTransformInterval: 0.05
 --- !u!1 &4971282833654228549
 GameObject:
   m_ObjectHideFlags: 0
