@@ -1203,7 +1203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56367cc2ed44f1e49835e9c247771fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assetId: 
+  assetId: 6e0346c4eb1920943adfcbbdb441a155
   objectId: 0
   visibleRange: 0
   alwaysVisible: 0
