@@ -1719,6 +1719,7 @@ MonoBehaviour:
   useRootMotionForJump: 0
   useRootMotionForFall: 0
   useRootMotionWhileNotMoving: 1
+  useRootMotionUnderWater: 0
   moveThreshold: 0.01
   snapThreshold: 5
   clientSyncTransformInterval: 0.05
