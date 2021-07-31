@@ -1749,6 +1749,8 @@ MonoBehaviour:
   effectContainers: []
   setEffectContainersBySetters: 0
   modelManager: {fileID: 6942656720686969324}
+  activateObjectsWhenSwitchModel: []
+  deactivateObjectsWhenSwitchModel: []
   equipmentContainers: []
   setEquipmentContainersBySetters: 0
   deactivateInstantiatedObjects: 0
@@ -2022,10 +2024,10 @@ MonoBehaviour:
   dataChannel: 0
   sendOptions: 0
   sendInterval: 0.1
+  entityTitle: CC
+  entityTitles: []
   textTitle: {fileID: 0}
   textTitleB: {fileID: 0}
-  ownerObjects: []
-  nonOwnerObjects: []
   syncTitle:
     behaviour: {fileID: 0}
     elementId: 0
@@ -2050,10 +2052,14 @@ MonoBehaviour:
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 
+  ownerObjects: []
+  nonOwnerObjects: []
   model: {fileID: 937158438418344278}
   cameraTargetTransform: {fileID: 7037845866863380887}
   fpsCameraTargetTransform: {fileID: 5930277072985912124}
   movementSecure: 1
+  canSideSprint: 0
+  canBackwardSprint: 0
   movementState:
     behaviour: {fileID: 0}
     elementId: 0
@@ -2103,8 +2109,6 @@ MonoBehaviour:
     value:
       objectId: 0
       seatIndex: 0
-  canSideSprint: 0
-  canBackwardSprint: 0
   combatTextTransform: {fileID: 427650199826738181}
   opponentAimTransform: {fileID: 8376519150398011727}
   isStaticHitBoxes: 0
@@ -2120,6 +2124,18 @@ MonoBehaviour:
   onDamageMissed:
     m_PersistentCalls:
       m_Calls: []
+  isImmune:
+    behaviour: {fileID: 0}
+    elementId: 0
+    alwaysSync: 0
+    doNotSyncInitialDataImmediately: 0
+    syncMode: 0
+    dataChannel: 0
+    deliveryMethod: 2
+    sendInterval: 0.1
+    clientDataChannel: 0
+    clientDeliveryMethod: 1
+    value: 0
   currentHp:
     behaviour: {fileID: 0}
     elementId: 0
@@ -2307,8 +2323,6 @@ MonoBehaviour:
     elementId: 0
     dataChannel: 0
     forOwnerOnly: 1
-  characterTitle: CC
-  characterTitles: []
   characterDatabases:
   - {fileID: 11400000, guid: dc49d25e15498434e833a15200c68605, type: 2}
   controllerPrefab: {fileID: 0}
@@ -2425,7 +2439,7 @@ MonoBehaviour:
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
-    syncMode: 0
+    syncMode: 1
     dataChannel: 0
     deliveryMethod: 2
     sendInterval: 0.1
@@ -2437,7 +2451,7 @@ MonoBehaviour:
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
-    syncMode: 0
+    syncMode: 1
     dataChannel: 0
     deliveryMethod: 2
     sendInterval: 0.1
@@ -2450,7 +2464,7 @@ MonoBehaviour:
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
-    syncMode: 0
+    syncMode: 1
     dataChannel: 0
     deliveryMethod: 1
     sendInterval: 0.1
@@ -2464,7 +2478,7 @@ MonoBehaviour:
     doNotSyncInitialDataImmediately: 0
     syncMode: 1
     dataChannel: 0
-    deliveryMethod: 2
+    deliveryMethod: 4
     sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
