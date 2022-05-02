@@ -24,10 +24,10 @@ MonoBehaviour:
       hp: 100
       hpRecovery: 0
       hpLeechRate: 0
-      mp: 0
+      mp: 100
       mpRecovery: 0
       mpLeechRate: 0
-      stamina: 0
+      stamina: 100
       staminaRecovery: 0
       staminaLeechRate: 0
       food: 0
@@ -44,7 +44,7 @@ MonoBehaviour:
       slotLimit: 0
       goldRate: 0
       expRate: 0
-      testStats: 0
+      testStat1: 0
     statsIncreaseEachLevel:
       hp: 0
       hpRecovery: 0
@@ -69,11 +69,13 @@ MonoBehaviour:
       slotLimit: 0
       goldRate: 0
       expRate: 0
-      testStats: 0
+      testStat1: 0
   attributes: []
   resistances: []
   armors: []
-  skillLevels: []
+  skillLevels:
+  - skill: {fileID: 11400000, guid: d55d8bfb45f9c574d9120b6ffcd66e3c, type: 2}
+    level: 1
   rightHandEquipItem: {fileID: 0}
   leftHandEquipItem: {fileID: 0}
   armorItems: []
