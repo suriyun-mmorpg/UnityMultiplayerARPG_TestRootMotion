@@ -895,7 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a250dc50d53944b80c6628ab2509d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainModel: {fileID: 5034970832220311933}
+  mainTpsModel: {fileID: 5034970832220311933}
   fpsModelPrefab: {fileID: 0}
   fpsModelPositionOffsets: {x: 0, y: 0, z: 0}
   fpsModelRotationOffsets: {x: 0, y: 0, z: 0}
@@ -936,16 +936,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e74e81f9479f8f9498539e109315d6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIdAssigned: 1
+  id: 26
+  visibleMaterials: []
+  invisibleMaterials: []
+  fpsMaterials: []
   hiddingObjects: []
   hiddingRenderers: []
   fpsHiddingObjects: []
   fpsHiddingRenderers: []
   genericAudioSource: {fileID: 0}
   effectContainers: []
+  setEffectLayerFollowEntity: 1
+  effectLayer:
+    layerIndex: 0
   setEffectContainersBySetters: 0
-  modelManager: {fileID: 6942656720686969324, guid: 4375bc8ec4fad144db9e1b282b70541e,
-    type: 3}
+  activateObjectsWhenSwitchModel: []
+  deactivateObjectsWhenSwitchModel: []
+  vehicleModels: []
   equipmentContainers: []
+  setEquipmentLayerFollowEntity: 1
+  equipmentLayer:
+    layerIndex: 0
   setEquipmentContainersBySetters: 0
   deactivateInstantiatedObjects: 0
   activateInstantiatedObject: 0
@@ -1040,8 +1052,8 @@ MonoBehaviour:
       triggerDurationRate: 0.5
       multiHitTriggerDurationRates: []
       durationType: 0
-      fixDurationValue: 0
-      extraDuration: 0
+      fixedDuration: 0
+      extendDuration: 0
       audioClips: []
     - clip: {fileID: 7400000, guid: 7b5b17e2d42e0424f9c36012595dc9b6, type: 3}
       playClipAllLayers: 0
@@ -1049,8 +1061,8 @@ MonoBehaviour:
       triggerDurationRate: 0.5
       multiHitTriggerDurationRates: []
       durationType: 0
-      fixDurationValue: 0
-      extraDuration: 0
+      fixedDuration: 0
+      extendDuration: 0
       audioClips: []
     - clip: {fileID: 7400000, guid: 018ce46eeecfeae4abb8016f2c6841ca, type: 3}
       playClipAllLayers: 0
@@ -1058,8 +1070,8 @@ MonoBehaviour:
       triggerDurationRate: 0.5
       multiHitTriggerDurationRates: []
       durationType: 0
-      fixDurationValue: 0
-      extraDuration: 0
+      fixedDuration: 0
+      extendDuration: 0
       audioClips: []
     leftHandAttackAnimations: []
     rightHandReloadAnimation:
@@ -1069,8 +1081,8 @@ MonoBehaviour:
       triggerDurationRate: 0
       multiHitTriggerDurationRates: []
       durationType: 0
-      fixDurationValue: 0
-      extraDuration: 0
+      fixedDuration: 0
+      extendDuration: 0
       audioClips: []
     leftHandReloadAnimation:
       clip: {fileID: 0}
@@ -1079,20 +1091,20 @@ MonoBehaviour:
       triggerDurationRate: 0
       multiHitTriggerDurationRates: []
       durationType: 0
-      fixDurationValue: 0
-      extraDuration: 0
+      fixedDuration: 0
+      extendDuration: 0
       audioClips: []
     skillCastClip: {fileID: 0}
     playSkillCastClipAllLayers: 0
     skillActivateAnimation:
-      clip: {fileID: 0}
+      clip: {fileID: 7400000, guid: 6c53184d9a4fe38429cf4aac4a3979d2, type: 3}
       playClipAllLayers: 0
       animSpeedRate: 0
       triggerDurationRate: 0
       multiHitTriggerDurationRates: []
       durationType: 0
-      fixDurationValue: 0
-      extraDuration: 0
+      fixedDuration: 0
+      extendDuration: 0
       audioClips: []
   weaponAnimations: []
   skillAnimations: []
@@ -1207,6 +1219,11 @@ MonoBehaviour:
   objectId: 0
   visibleRange: 0
   alwaysVisible: 0
+  doNotDestroyWhenDisconnect: 0
+  poolingSize: 0
+  onGetInstance:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1575339307188780656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1223,89 +1240,42 @@ MonoBehaviour:
   dataChannel: 0
   sendOptions: 0
   sendInterval: 0.1
-  textTitle: {fileID: 0}
-  textTitleB: {fileID: 0}
-  ownerObjects: []
-  nonOwnerObjects: []
+  entityTitle: RB
+  entityTitles: []
   syncTitle:
     behaviour: {fileID: 0}
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 
-  syncTitleB:
-    behaviour: {fileID: 0}
-    elementId: 0
-    alwaysSync: 0
-    doNotSyncInitialDataImmediately: 0
-    syncMode: 0
-    dataChannel: 0
-    deliveryMethod: 2
-    sendInterval: 0.1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 
+  ownerObjects: []
+  nonOwnerObjects: []
   model: {fileID: 5034970832220311933}
   cameraTargetTransform: {fileID: 204238358966823864}
   fpsCameraTargetTransform: {fileID: 110111164758752806}
   movementSecure: 1
-  movementState:
-    behaviour: {fileID: 0}
-    elementId: 0
-    alwaysSync: 1
-    doNotSyncInitialDataImmediately: 1
-    syncMode: 0
-    dataChannel: 0
-    deliveryMethod: 1
-    sendInterval: 0.1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
-  extraMovementState:
-    behaviour: {fileID: 0}
-    elementId: 0
-    alwaysSync: 1
-    doNotSyncInitialDataImmediately: 1
-    syncMode: 0
-    dataChannel: 0
-    deliveryMethod: 1
-    sendInterval: 0.1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
-  direction2D:
-    behaviour: {fileID: 0}
-    elementId: 0
-    alwaysSync: 0
-    doNotSyncInitialDataImmediately: 1
-    syncMode: 0
-    dataChannel: 0
-    deliveryMethod: 1
-    sendInterval: 0.1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
+  canSideSprint: 0
+  canBackwardSprint: 0
   passengingVehicle:
     behaviour: {fileID: 0}
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 1
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value:
       objectId: 0
       seatIndex: 0
-  canSideSprint: 0
-  canBackwardSprint: 0
   combatTextTransform: {fileID: 4150471310150297713}
   opponentAimTransform: {fileID: 93531220172479646}
   isStaticHitBoxes: 0
@@ -1321,15 +1291,27 @@ MonoBehaviour:
   onDamageMissed:
     m_PersistentCalls:
       m_Calls: []
+  isImmune:
+    behaviour: {fileID: 0}
+    elementId: 0
+    alwaysSync: 0
+    doNotSyncInitialDataImmediately: 0
+    syncMode: 0
+    sendInterval: 0.1
+    dataChannel: 0
+    deliveryMethod: 2
+    clientDataChannel: 0
+    clientDeliveryMethod: 1
+    value: 0
   currentHp:
     behaviour: {fileID: 0}
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1337,6 +1319,7 @@ MonoBehaviour:
   missileDamageTransform: {fileID: 3514450361530632537}
   characterUiTransform: {fileID: 2244209180181038823}
   miniMapUiTransform: {fileID: 16006462884874389}
+  chatBubbleTransform: {fileID: 0}
   debugDamageLaunchingColor: {r: 0, g: 1, b: 0, a: 0.04}
   race: {fileID: 0}
   onDead:
@@ -1354,9 +1337,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 
@@ -1366,9 +1349,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1378,9 +1361,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1390,9 +1373,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1402,9 +1385,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 1
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1414,9 +1397,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1426,9 +1409,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1438,9 +1421,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1450,9 +1433,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 2
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 1
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1462,10 +1445,10 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 2
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
-    clientDataChannel: 0
+    clientDataChannel: 3
     clientDeliveryMethod: 1
     value: 0
   selectableWeaponSets:
@@ -1508,8 +1491,6 @@ MonoBehaviour:
     elementId: 0
     dataChannel: 0
     forOwnerOnly: 1
-  characterTitle: RB
-  characterTitles: []
   characterDatabases:
   - {fileID: 11400000, guid: 466b5727c2dd9d943923cab24e0d2f0a, type: 2}
   controllerPrefab: {fileID: 0}
@@ -1519,9 +1500,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1531,9 +1512,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1543,9 +1524,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1555,9 +1536,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1567,9 +1548,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1579,9 +1560,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1591,9 +1572,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1603,9 +1584,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1615,9 +1596,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 0
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1626,10 +1607,10 @@ MonoBehaviour:
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
-    syncMode: 0
+    syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 
@@ -1638,10 +1619,10 @@ MonoBehaviour:
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
-    syncMode: 0
+    syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 2
-    sendInterval: 0.1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: {x: 0, y: 0, z: 0}
@@ -1651,10 +1632,22 @@ MonoBehaviour:
     elementId: 0
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
-    syncMode: 0
+    syncMode: 1
+    sendInterval: 0.1
     dataChannel: 0
     deliveryMethod: 1
+    clientDataChannel: 0
+    clientDeliveryMethod: 1
+    value: 0
+  unmuteTime:
+    behaviour: {fileID: 0}
+    elementId: 0
+    alwaysSync: 0
+    doNotSyncInitialDataImmediately: 0
+    syncMode: 0
     sendInterval: 0.1
+    dataChannel: 0
+    deliveryMethod: 1
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1664,9 +1657,9 @@ MonoBehaviour:
     alwaysSync: 0
     doNotSyncInitialDataImmediately: 0
     syncMode: 1
-    dataChannel: 0
-    deliveryMethod: 2
     sendInterval: 0.1
+    dataChannel: 0
+    deliveryMethod: 4
     clientDataChannel: 0
     clientDeliveryMethod: 1
     value: 0
@@ -1709,9 +1702,14 @@ MonoBehaviour:
   backwardMoveSpeedRate: 0.75
   gravity: 9.81
   maxFallVelocity: 40
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
   airborneDelay: 0.01
   doNotChangeVelocityWhileAirborne: 0
   landedPauseMovementDuration: 0
+  beforeCrawlingPauseMovementDuration: 0
+  afterCrawlingPauseMovementDuration: 0
   underWaterThreshold: 0.75
   autoSwimToSurface: 0
   useRootMotionForMovement: 1
@@ -1720,11 +1718,7 @@ MonoBehaviour:
   useRootMotionForFall: 0
   useRootMotionWhileNotMoving: 1
   useRootMotionUnderWater: 0
-  moveThreshold: 0.01
   snapThreshold: 5
-  clientSyncTransformInterval: 0.05
-  clientSendInputsInterval: 0.05
-  serverSyncTransformInterval: 0.05
 --- !u!1 &4971282833654228549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2085,6 +2079,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2609,6 +2604,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2633,6 +2629,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &7956192540283854185
 GameObject:
   m_ObjectHideFlags: 0
