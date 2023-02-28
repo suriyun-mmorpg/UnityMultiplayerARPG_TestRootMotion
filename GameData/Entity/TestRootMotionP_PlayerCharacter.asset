@@ -40,7 +40,7 @@ MonoBehaviour:
       blockDmgRate: 0
       moveSpeed: 5
       atkSpeed: 1
-      weightLimit: 0
+      weightLimit: 100
       slotLimit: 0
       goldRate: 0
       expRate: 0
@@ -70,6 +70,7 @@ MonoBehaviour:
       goldRate: 0
       expRate: 0
       testStat1: 0
+    statsIncreaseEachLevelByLevels: []
   attributes: []
   resistances: []
   armors: []
