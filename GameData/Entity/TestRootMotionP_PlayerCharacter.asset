@@ -19,6 +19,12 @@ MonoBehaviour:
   languageSpecificDescriptions: []
   category: 
   icon: {fileID: 0}
+  addressableIcon:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  expTable: {fileID: 0}
   stats:
     baseStats:
       hp: 100
@@ -44,6 +50,24 @@ MonoBehaviour:
       slotLimit: 0
       goldRate: 0
       expRate: 0
+      itemDropRate: 0
+      jumpHeight: 0
+      headDamageAbsorbs: 0
+      bodyDamageAbsorbs: 0
+      fallDamageAbsorbs: 0
+      gravityRate: 0
+      protectedSlotLimit: 0
+      ammoCapacity: 0
+      recoilRate: 0
+      rateOfFire: 0
+      reloadDuration: 0
+      fireSpreadRangeRate: 0
+      fireSpread: 0
+      decreaseFoodDecreation: 0
+      decreaseWaterDecreation: 0
+      decreaseStaminaDecreation: 0
+      buyItemPriceRate: 0
+      sellItemPriceRate: 0
       testStat1: 0
     statsIncreaseEachLevel:
       hp: 0
@@ -69,14 +93,37 @@ MonoBehaviour:
       slotLimit: 0
       goldRate: 0
       expRate: 0
+      itemDropRate: 0
+      jumpHeight: 0
+      headDamageAbsorbs: 0
+      bodyDamageAbsorbs: 0
+      fallDamageAbsorbs: 0
+      gravityRate: 0
+      protectedSlotLimit: 0
+      ammoCapacity: 0
+      recoilRate: 0
+      rateOfFire: 0
+      reloadDuration: 0
+      fireSpreadRangeRate: 0
+      fireSpread: 0
+      decreaseFoodDecreation: 0
+      decreaseWaterDecreation: 0
+      decreaseStaminaDecreation: 0
+      buyItemPriceRate: 0
+      sellItemPriceRate: 0
       testStat1: 0
     statsIncreaseEachLevelByLevels: []
   attributes: []
   resistances: []
   armors: []
-  skillLevels:
+  statusEffectResistances: []
+  skills:
   - skill: {fileID: 11400000, guid: d55d8bfb45f9c574d9120b6ffcd66e3c, type: 2}
-    level: 1
+    level: 0
+    skillLevel:
+      baseAmount: 1
+      amountIncreaseEachLevel: 0
+      amountIncreaseEachLevelByLevels: []
   rightHandEquipItem: {fileID: 0}
   leftHandEquipItem: {fileID: 0}
   armorItems: []
