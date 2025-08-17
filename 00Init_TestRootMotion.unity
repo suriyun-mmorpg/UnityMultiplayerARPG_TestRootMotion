@@ -168,6 +168,7 @@ MonoBehaviour:
   doNotReadyOnSceneLoaded: 0
   doNotDestroyOnSceneChanges: 0
   loadOfflineSceneWhenClientStopped: 1
+  safeGameStatePacket: 0
   auctionHouseMessageTypes:
     createAuctionRequestType: 1300
     bidRequestType: 1301
@@ -847,7 +848,6 @@ GameObject:
   - component: {fileID: 1379718503}
   - component: {fileID: 1379718502}
   - component: {fileID: 1379718505}
-  - component: {fileID: 1379718506}
   - component: {fileID: 1379718507}
   - component: {fileID: 1379718504}
   - component: {fileID: 1379718508}
@@ -881,6 +881,9 @@ MonoBehaviour:
   gmCommands: {fileID: 0}
   equipmentModelBonesSetupManager: {fileID: 0}
   networkSetting: {fileID: 11400000, guid: c0825e8ee894749459ab4c8dda26dfe6, type: 2}
+  expDropRepresentItem: {fileID: 0}
+  goldDropRepresentItem: {fileID: 0}
+  currencyDropRepresentItems: []
   itemDropEntityPrefab: {fileID: 114247390284341630, guid: 611b907cf80c87a4eb9e0d5d4a8688f5,
     type: 3}
   expDropEntityPrefab: {fileID: 0}
@@ -998,6 +1001,7 @@ MonoBehaviour:
   expTree: 140000001e00000031000000490000006500000086000000aa000000d1000000fa000000270100005601000087010000bb010000f10100002902000064020000a0020000de0200001e0300005f030000a3030000e80300002f04000077040000c10400000d0500005a050000a9050000f90500004a0600009d060000f1060000470700009e070000f707000050080000ab0800000809000065090000c4090000240a0000850a0000e80a00004b0b0000b00b0000160c00007d0c0000e50c00004e0d0000b90d0000240e0000910e0000fe0e00006d0f0000dd0f00004d100000bf10000032110000a61100001b12000090120000071300007f130000f813000071140000ec14000068150000e415000062160000e01600005f170000e017000061180000e318000066190000ea1900006e1a0000f41a00007a1b0000021c00008a1c0000131d00009d1d0000281e0000b31e0000401f0000cd1f00005b200000ea200000792100000a2200009b2200002d230000c023000054240000e82400007e25000014260000aa26000042270000
   expTable: {fileID: 0}
   gameDatabase: {fileID: 11400000, guid: 65bf353ae79dde44faa5655a9eb2dffa, type: 2}
+  entitySetting: {fileID: 0}
   npcDatabase: {fileID: 11400000, guid: dae14f7f7d125fc4096ba7ac1f68d581, type: 2}
   warpPortalDatabase: {fileID: 11400000, guid: 6a5e8bb8645bbb349a05709f9b37b5df, type: 2}
   socialSystemSetting: {fileID: 11400000, guid: afad462dae207414f91b207f6882dad2,
@@ -1218,7 +1222,8 @@ MonoBehaviour:
   - keyName: RotateRight
     keyCode: 107
   settingsSaveKeyPrefix: SETTING_KEY_BIND
-  inputActionAsset: {fileID: 0}
+  inputActionAsset: {fileID: -944628639613478452, guid: b7b0acfa1d32d3f4fb4dd990fef8568c,
+    type: 3}
 --- !u!114 &1379718505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1307,24 +1312,6 @@ MonoBehaviour:
     layer2:
       layerIndex: 9
     ignore: 1
---- !u!114 &1379718506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379718501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22368900ab60ae4882d09d2b5bf7ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxLevel: 100
-  expCalculator:
-    minValue: 20
-    maxValue: 10050
-    growth: 1.5
-  calculateExp: 0
 --- !u!114 &1379718507
 MonoBehaviour:
   m_ObjectHideFlags: 0

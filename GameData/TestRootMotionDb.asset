@@ -13,15 +13,8 @@ MonoBehaviour:
   m_Name: TestRootMotionDb
   m_EditorClassIdentifier: 
   playerCharacterEntities:
-  - {fileID: 114586576023340800, guid: 0f0836d25b5171245a4c66deb284f48d, type: 3}
-  - {fileID: 114191363084881030, guid: c4ba22d80e3951149993cfdfa83d5bbd, type: 3}
-  - {fileID: 128530181839780742, guid: fcdc3b6ce41c68a46a66bd80f781bb50, type: 3}
-  - {fileID: 374512570995460594, guid: f4d75f6a6e5739b46817549dc6c6b73d, type: 3}
-  - {fileID: 114740533051626506, guid: e4504fbed449d4c4cba6c22bd4953a25, type: 3}
-  - {fileID: 114666491478848388, guid: 545a32703d951094185d08198bc8316d, type: 3}
-  - {fileID: 4887551448865305903, guid: 4375bc8ec4fad144db9e1b282b70541e, type: 3}
-  - {fileID: 1575339307188780656, guid: 6e0346c4eb1920943adfcbbdb441a155, type: 3}
   - {fileID: 4887551448865305903, guid: a8fb789b8dce0f84a96e545fad023d46, type: 3}
+  - {fileID: 4887551448865305903, guid: ab06d96963f1e484fb3399e021147ccd, type: 3}
   monsterCharacterEntities:
   - {fileID: 114107677553822186, guid: 2124e2e5e8dd2794ea8c8aff808d0096, type: 3}
   - {fileID: 114313543944479198, guid: c26675f5ea04ade429c509dd5998a3a3, type: 3}
@@ -29,6 +22,11 @@ MonoBehaviour:
   - {fileID: 5503484860487485313, guid: 0586cf25f965f3a4fb8545233fd5f6eb, type: 3}
   vehicleEntities:
   - {fileID: 114414903903199864, guid: ff9787a13f67d204f9931790d6db8e1d, type: 3}
+  otherNetworkObjects: []
+  addressablePlayerCharacterEntities: []
+  addressableMonsterCharacterEntities: []
+  addressableVehicleEntities: []
+  addressableOtherNetworkObjects: []
   attributes:
   - {fileID: 11400000, guid: cf50e3647cfae0e44b683163d2171277, type: 2}
   - {fileID: 11400000, guid: cd3d2fb4f3c67fd4dbba3bd0ccd0095e, type: 2}
@@ -147,6 +145,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 558b16358ddfa6346b5e5e6211155da6, type: 2}
   - {fileID: 11400000, guid: 401cce43094968c4bbca0024b52a4644, type: 2}
   - {fileID: 11400000, guid: 494792636296b624fbf4ff17294217c5, type: 2}
+  playerIcons: []
+  playerFrames: []
+  playerTitles: []
   guildSkills:
   - {fileID: 11400000, guid: d3875bef37ed4aa4dba86b08069b5a8f, type: 2}
   - {fileID: 11400000, guid: 56999d63a8734bd4f8b19e254ecfbeae, type: 2}
@@ -161,6 +162,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dc49d25e15498434e833a15200c68605, type: 2}
   - {fileID: 11400000, guid: 466b5727c2dd9d943923cab24e0d2f0a, type: 2}
   - {fileID: 11400000, guid: 0c33fbf52a6301d47967f3638152654d, type: 2}
+  playerCharacterEntityMetaDataList: []
   monsterCharacters:
   - {fileID: 11400000, guid: aeba3337cf294524f8e2902f87a7532d, type: 2}
   - {fileID: 11400000, guid: 1c730dbe51ce978429028abe63e1df91, type: 2}
@@ -182,14 +184,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b098152a1e9a1564bbe41cad1f3baf16, type: 2}
   - {fileID: 11400000, guid: 1b2b3f830f1dac4458bf9a6c347f5248, type: 2}
   - {fileID: 11400000, guid: 150c22002ef3a7d4786355f0cd52ffe4, type: 2}
-  attributeBundleName: attribute
-  currencyBundleName: currency
-  damageElementBundleName: damageElement
-  characterBundleName: character
-  itemBundleName: item
-  mapInfoBundleName: map
-  sceneBundleName: scene
-  skillBundleName: skill
-  guildSkillBundleName: guildSkill
-  questBundleName: quest
-  setNameForUnnamedAssetsOnly: 1
+  gachas: []

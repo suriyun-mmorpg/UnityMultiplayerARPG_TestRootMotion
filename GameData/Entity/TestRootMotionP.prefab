@@ -1693,6 +1693,7 @@ GameObject:
   - component: {fileID: 5077140094489725093}
   - component: {fileID: 3714407882825158878}
   - component: {fileID: 7728780436671326008}
+  - component: {fileID: 977075948530070120}
   m_Layer: 0
   m_Name: TestRootMotionP
   m_TagString: Untagged
@@ -1760,6 +1761,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainTpsModel: {fileID: -6504787274589345376}
   fpsModelPrefab: {fileID: 0}
+  addressableFpsModelPrefab:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   fpsModelPositionOffsets: {x: 0, y: 0, z: 0}
   fpsModelRotationOffsets: {x: 0, y: 0, z: 0}
   vehicleModels: []
@@ -1825,35 +1831,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac04ae93f267f7d4596f108f0246ae80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourIndex: 0
-  dataChannel: 0
-  sendOptions: 0
-  sendInterval: 0.1
-  stoppingDistance: 0.1
+  _behaviourIndex: 0
   movementSecure: 1
+  positionThreshold: 0.01
+  eulerAnglesThreshold: 1
+  keepAliveTicks: 10
+  stoppingDistance: 0.1
   jumpHeight: 2
   applyJumpForceMode: 0
   applyJumpForceFixedDuration: 0
   backwardMoveSpeedRate: 0.75
   gravity: 9.81
   maxFallVelocity: 40
-  stickGroundForce: 9.6
-  airborneDelay: 0.01
+  groundedVerticalVelocity: -2
+  groundSnapDistance: 2
   doNotChangeVelocityWhileAirborne: 0
   landedPauseMovementDuration: 0
   beforeCrawlingPauseMovementDuration: 0
   afterCrawlingPauseMovementDuration: 0
   underWaterThreshold: 0.75
   autoSwimToSurface: 0
-  groundCheckYOffsets: 0.1
-  forceUngroundAfterJumpDuration: 0.1
+  groundCheckOffsets: 0.14
+  groundCheckRadius: 0.28
   groundCheckGizmosColor: {r: 0, g: 0, b: 1, a: 1}
+  airborneCheckOffsets: 0.14
+  airborneCheckRadius: 0.28
+  airborneCheckGizmosColor: {r: 0, g: 1, b: 1, a: 1}
+  forceUngroundAfterJumpDuration: 0.1
+  crawlCheckOffsets: -0.14
+  crawlCheckRaycasts: 0
+  crawlCheckRadius: 1
+  crawlCheckGizmosColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  dashingForceApplier:
+    speed: 20
+    deceleration: 20
+    duration: 0
+  alwaysUseRootMotion: 1
   useRootMotionForMovement: 1
   useRootMotionForAirMovement: 0
   useRootMotionForJump: 0
   useRootMotionForFall: 0
-  useRootMotionWhileNotMoving: 1
   useRootMotionUnderWater: 0
+  useRootMotionClimbing: 0
+  rootMotionGroundedVerticalVelocity: -2
   snapThreshold: 5
 --- !u!114 &3233730429962042412
 MonoBehaviour:
@@ -1867,10 +1887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f653b457982431e418621ca9efdedad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourIndex: 0
-  dataChannel: 0
-  sendOptions: 0
-  sendInterval: 0.1
+  _behaviourIndex: 0
   maxQueueSize: 5
 --- !u!114 &4376756533962852095
 MonoBehaviour:
@@ -1884,8 +1901,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56367cc2ed44f1e49835e9c247771fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoAssignAssetIdIfEmpty: 1
+  forceUseAssetGUIDAsAssetId: 0
   assetId: a8fb789b8dce0f84a96e545fad023d46
-  objectId: 0
+  autoAssignSceneObjectIdIfEmpty: 1
+  sceneObjectId: 0
+  networkedObjectId: 0
+  syncChannelId: 0
+  defaultRpcChannelId: 0
   visibleRange: 0
   alwaysVisible: 0
   doNotDestroyWhenDisconnect: 0
@@ -1911,23 +1934,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c74016ac73a5de489347503fc752e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourIndex: 0
-  dataChannel: 0
-  sendOptions: 0
-  sendInterval: 0.1
+  _behaviourIndex: 0
+  syncMetaDataId:
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   entityTitle: CC_P
   entityTitles: []
   syncTitle:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   ownerObjects: []
   nonOwnerObjects: []
   model: {fileID: 0}
@@ -1951,27 +1968,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   isImmune:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   currentHp:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   meleeDamageTransform: {fileID: 68622412790970984}
   missileDamageTransform: {fileID: 571340035751968339}
   characterUiTransform: {fileID: 8752856211870288835}
@@ -1989,448 +1992,227 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   id:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   level:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   exp:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   currentMp:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   currentStamina:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   currentFood:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   currentWater:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   equipWeaponSet:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   isWeaponsSheathed:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 2
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   pitch:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 2
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
+  lookPosition:
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
+    valueChangeDistance: 0.01
   aimPosition:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 2
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   targetEntityId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 2
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 3
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
+  mount:
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   selectableWeaponSets:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   attributes:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   skills:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   skillUsages:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   buffs:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   equipItems:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   nonEquipItems:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   summons:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   characterDatabases:
   - {fileID: 11400000, guid: 0c33fbf52a6301d47967f3638152654d, type: 2}
   controllerPrefab: {fileID: 0}
+  addressableControllerPrefab:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   dataId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   factionId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   statPoint:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   skillPoint:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   gold:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   userGold:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   userCash:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   partyId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   guildId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   respawnMapName:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   respawnPosition:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: {x: 0, y: 0, z: 0}
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
     valueChangeDistance: 0.01
   iconDataId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   frameDataId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   titleDataId:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   lastDeadTime:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   unmuteTime:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 1
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   isPkOn:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   pkPoint:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 0
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   consecutivePkKills:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
+  reputation:
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   isWarping:
-    behaviour: {fileID: 0}
-    elementId: 0
-    syncBehaviour: 0
-    syncMode: 1
-    sendInterval: 0.1
-    dataChannel: 0
-    deliveryMethod: 2
-    clientDataChannel: 0
-    clientDeliveryMethod: 1
-    value: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   hotkeys:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   quests:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
-  serverBools: []
-  serverInts: []
-  serverFloats: []
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   currencies:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   privateBools:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   privateInts:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   privateFloats:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 1
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   publicBools:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   publicInts:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   publicFloats:
-    behaviour: {fileID: 0}
-    elementId: 0
-    dataChannel: 0
-    forOwnerOnly: 0
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
+  guildSkills:
+    _behaviour: {fileID: 0}
+    _elementId: 0
+    logTagName: 
   writeAddonLog: 0
 --- !u!114 &-6504787274589345376
 MonoBehaviour:
@@ -2444,7 +2226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d001d904d2d27d46a89e978fbf5e85b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _id: 28
   visibleMaterials: []
   invisibleMaterials: []
   fpsMaterials: []
@@ -2470,6 +2251,15 @@ MonoBehaviour:
   activateInstantiatedObject: 0
   animator: {fileID: 4088458792223617656}
   skinnedMeshRenderer: {fileID: 0}
+  animationLodUpdater:
+    settings:
+    - distance: 25
+      framesPerSecond: 30
+    - distance: 50
+      framesPerSecond: 15
+    - distance: 75
+      framesPerSecond: 5
+    sortSettings: 0
   actionAvatarMask: {fileID: 0}
   transitionDuration: 0.1
   defaultAnimations:
@@ -2504,6 +2294,20 @@ MonoBehaviour:
         applyPlayableIk: 0
       rightState:
         clip: {fileID: 7400000, guid: 9f2cd5651f41077488b70ee6fb92ad24, type: 3}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      downState:
+        clip: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
@@ -2560,6 +2364,20 @@ MonoBehaviour:
         applyFootIk: 0
         applyPlayableIk: 0
       rightState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      downState:
         clip: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
@@ -2623,6 +2441,20 @@ MonoBehaviour:
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
       forwardLeftState:
         clip: {fileID: 0}
         animSpeedRate: 0
@@ -2681,6 +2513,20 @@ MonoBehaviour:
         applyFootIk: 0
         applyPlayableIk: 0
       rightState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      downState:
         clip: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
@@ -2751,6 +2597,20 @@ MonoBehaviour:
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
       forwardLeftState:
         clip: {fileID: 0}
         animSpeedRate: 0
@@ -2809,6 +2669,20 @@ MonoBehaviour:
         applyFootIk: 0
         applyPlayableIk: 0
       rightState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      downState:
         clip: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
@@ -2864,14 +2738,199 @@ MonoBehaviour:
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
-    hurtState:
-      clip: {fileID: 7400000, guid: 861c5aaef9829104d9122fa96811dfb9, type: 3}
-      avatarMask: {fileID: 0}
+    vehicleEnterExitStates:
+      enterState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
+      exitState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
+    climbBottomEnterExitStates:
+      enterState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
+      exitState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
+    climbTopEnterExitStates:
+      enterState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
+      exitState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
+    climbIdleState:
+      clip: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+    climbMoveStates:
+      forwardState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      backwardState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      leftState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      rightState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      forwardLeftState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      forwardRightState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      backwardLeftState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+      backwardRightState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+    hurtState:
+      clip: {fileID: 7400000, guid: 861c5aaef9829104d9122fa96811dfb9, type: 3}
+      animSpeedRate: 0
+      transitionDuration: 0
+      isAdditive: 0
+      applyFootIk: 0
+      applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     deadState:
       clip: {fileID: 7400000, guid: 9757788373ec8734cb4f7a3db84aef2f, type: 3}
       animSpeedRate: 0
@@ -2879,189 +2938,338 @@ MonoBehaviour:
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
-    pickupState:
+    dashStartState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+    dashLoopState:
+      clip: {fileID: 0}
+      animSpeedRate: 0
+      transitionDuration: 0
+      isAdditive: 0
+      applyFootIk: 0
+      applyPlayableIk: 0
+    dashEndState:
+      clip: {fileID: 0}
+      animSpeedRate: 0
+      transitionDuration: 0
+      isAdditive: 0
+      applyFootIk: 0
+      applyPlayableIk: 0
+    pickupState:
+      clip: {fileID: 0}
+      animSpeedRate: 0
+      transitionDuration: 0
+      isAdditive: 0
+      applyFootIk: 0
+      applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     rightHandChargeState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 1
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     leftHandChargeState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 1
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     rightHandAttackAnimations:
     - state:
         clip: {fileID: 7400000, guid: dce280ced5e006c4cb0eb0fab2f51b75, type: 3}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       triggerDurationRates:
       - 0.5
       durationType: 0
       fixedDuration: 0
       extendDuration: 0
       audioClips: []
-      skipMovementValidation: 0
+      addressableAudioClips: []
     - state:
         clip: {fileID: 7400000, guid: 7b5b17e2d42e0424f9c36012595dc9b6, type: 3}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       triggerDurationRates:
       - 0.5
       durationType: 0
       fixedDuration: 0
       extendDuration: 0
       audioClips: []
-      skipMovementValidation: 0
+      addressableAudioClips: []
     - state:
         clip: {fileID: 7400000, guid: 018ce46eeecfeae4abb8016f2c6841ca, type: 3}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       triggerDurationRates:
       - 0.5
       durationType: 0
       fixedDuration: 0
       extendDuration: 0
       audioClips: []
-      skipMovementValidation: 0
+      addressableAudioClips: []
     leftHandAttackAnimations: []
     rightHandReloadAnimation:
       state:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       triggerDurationRates:
       - 0
       durationType: 0
       fixedDuration: 0
       extendDuration: 0
       audioClips: []
-      skipMovementValidation: 0
+      addressableAudioClips: []
     leftHandReloadAnimation:
       state:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       triggerDurationRates:
       - 0
       durationType: 0
       fixedDuration: 0
       extendDuration: 0
       audioClips: []
-      skipMovementValidation: 0
+      addressableAudioClips: []
     skillCastState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 1
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     skillActivateAnimation:
       state:
         clip: {fileID: 7400000, guid: 6c53184d9a4fe38429cf4aac4a3979d2, type: 3}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       triggerDurationRates:
       - 0
       durationType: 0
       fixedDuration: 0
       extendDuration: 0
       audioClips: []
-      skipMovementValidation: 0
+      addressableAudioClips: []
     rightHandWeaponSheathingAnimation:
       sheathState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       sheathedDurationRate: 0
       unsheathState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       unsheathedDurationRate: 0
     leftHandWeaponSheathingAnimation:
       sheathState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       sheathedDurationRate: 0
       unsheathState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       unsheathedDurationRate: 0
     leftHandShieldSheathingAnimation:
       sheathState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       sheathedDurationRate: 0
       unsheathState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+        clipWhileMoving: {fileID: 0}
+        avatarMaskWhileMoving: {fileID: 0}
+        clipWhileSprinting: {fileID: 0}
+        avatarMaskWhileSprinting: {fileID: 0}
+        clipWhileAirbourne: {fileID: 0}
+        avatarMaskWhileAirbourne: {fileID: 0}
+        skipMovementValidation: 0
+        shouldUseRootMotion: 0
       unsheathedDurationRate: 0
   weaponAnimations: []
   leftHandWeaponAnimations: []
@@ -3069,474 +3277,666 @@ MonoBehaviour:
     weaponType: {fileID: 0}
     idleState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     moveStates:
       forwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       leftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       rightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
     sprintStates:
       forwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       leftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       rightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
     walkStates:
       forwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       leftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       rightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
     crouchIdleState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     crouchMoveStates:
       forwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       leftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       rightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
     crawlIdleState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     crawlMoveStates:
       forwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       leftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       rightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
     swimIdleState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     swimMoveStates:
       forwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       leftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       rightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      upState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
+      downState:
+        clip: {fileID: 0}
+        animSpeedRate: 0
+        transitionDuration: 0
+        isAdditive: 0
+        applyFootIk: 0
+        applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       forwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardLeftState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
       backwardRightState:
         clip: {fileID: 0}
-        avatarMask: {fileID: 0}
         animSpeedRate: 0
         transitionDuration: 0
         isAdditive: 0
         applyFootIk: 0
         applyPlayableIk: 0
+        avatarMask: {fileID: 0}
     jumpState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     fallState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     landedState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
-    hurtState:
-      clip: {fileID: 0}
       avatarMask: {fileID: 0}
-      animSpeedRate: 0
-      transitionDuration: 0
-      isAdditive: 0
-      applyFootIk: 0
-      applyPlayableIk: 0
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
     deadState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
-    pickupState:
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
+    dashStartState:
       clip: {fileID: 0}
-      avatarMask: {fileID: 0}
       animSpeedRate: 0
       transitionDuration: 0
       isAdditive: 0
       applyFootIk: 0
       applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
+    dashLoopState:
+      clip: {fileID: 0}
+      animSpeedRate: 0
+      transitionDuration: 0
+      isAdditive: 0
+      applyFootIk: 0
+      applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
+    dashEndState:
+      clip: {fileID: 0}
+      animSpeedRate: 0
+      transitionDuration: 0
+      isAdditive: 0
+      applyFootIk: 0
+      applyPlayableIk: 0
+      avatarMask: {fileID: 0}
+      clipWhileMoving: {fileID: 0}
+      avatarMaskWhileMoving: {fileID: 0}
+      clipWhileSprinting: {fileID: 0}
+      avatarMaskWhileSprinting: {fileID: 0}
+      clipWhileAirbourne: {fileID: 0}
+      avatarMaskWhileAirbourne: {fileID: 0}
+      skipMovementValidation: 0
+      shouldUseRootMotion: 0
   skillAnimations: []
   customAnimations: []
 --- !u!114 &5077140094489725093
@@ -3551,10 +3951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f59b792856e9da488870d43b58f675c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourIndex: 0
-  dataChannel: 0
-  sendOptions: 0
-  sendInterval: 0.1
+  _behaviourIndex: 0
 --- !u!114 &3714407882825158878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3567,10 +3964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b7c18fcf2a2384b8e3e93ea376db6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourIndex: 0
-  dataChannel: 0
-  sendOptions: 0
-  sendInterval: 0.1
+  _behaviourIndex: 0
 --- !u!114 &7728780436671326008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3583,10 +3977,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af2fdfb0f755ab4a9847cb15871c95d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourIndex: 0
-  dataChannel: 0
-  sendOptions: 0
-  sendInterval: 0.1
+  _behaviourIndex: 0
+--- !u!114 &977075948530070120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7266739031805982134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3095f43324f7cc948b12c70cae24cecd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7365739041332192369
 GameObject:
   m_ObjectHideFlags: 0
